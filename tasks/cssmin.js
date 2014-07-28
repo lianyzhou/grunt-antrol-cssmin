@@ -43,7 +43,8 @@ module.exports = function(grunt) {
         var src = grunt.file.read(file);
         max += src;
         options.relativeTo = path.dirname(file);
-        return minify(src, options);
+        var filepathComment = "/*" + file + "*/\n";
+        return filepathComment + minify(src, options) + "\n";
       }).join('');
 
       if (min.length === 0) {
